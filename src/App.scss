@@ -1,0 +1,54 @@
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Josefin+Sans&family=Zilla+Slab&display=swap');
+
+@import './variables.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: $font;
+	color: #fff;
+	font-size: 18px;
+	line-height: 1;
+	letter-spacing: 0.5px;
+}
+
+.r5 {
+	border-radius: 5px;
+}
+
+.r10 {
+	border-radius: 10px;
+}
+
+.fa {
+	text-align: center;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.hover {
+	&:hover {
+		fill: #000 !important;
+		color: #000 !important;
+		cursor: pointer;
+
+		&>* {
+			fill: #000 !important;
+			color: #000 !important;
+			cursor: pointer;
+		}
+	}
+}
+
+main {
+	margin-top: 10px;
+
+	.container {
+		background: $main_blue;
+	}
+}
