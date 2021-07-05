@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {sortOptions, filterOptions} from '../Constants/constants';
+import {sortOptions, filterOptions} from '../Helpers/Constants/constants';
 
 import './Home.css';
 
