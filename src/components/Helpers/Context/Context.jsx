@@ -1,9 +1,9 @@
 import React from 'react';
-import { sortOptions, filterOptions } from '../Constants/constants';
+import { sortOptions, viewOptions } from '../Constants/constants';
 
 const sortViewStatus = {
 	sort: sortOptions.lowFirst,
-	view: filterOptions.many
+	view: viewOptions.many
 };
 
 export const ViewContext = React.createContext(sortViewStatus);

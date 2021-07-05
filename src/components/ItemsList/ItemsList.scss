@@ -1,0 +1,48 @@
+@import '../../variables.scss';
+
+.list {
+	display: grid;
+	grid-gap: 20px;
+
+	&.many {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	&.little {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.item {
+		background: $main_pink;
+		padding: 20px;
+
+		.fa {
+			font-size: 25px;
+		}
+
+		p {
+			display: inline-block;
+			font-size: 25px;
+		}
+
+		.img {
+			width: 100%;
+			height: 200px;
+			background: rgba(128, 128, 128, 0.767);
+			margin-bottom: 20px;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+
+			.counter {
+				margin: 0 10px;
+			}
+		}
+	}
+}

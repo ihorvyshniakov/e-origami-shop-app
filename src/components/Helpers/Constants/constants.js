@@ -3,7 +3,7 @@ export const sortOptions = {
 	lowFirst: 'low to high'
 }
 
-export const filterOptions = {
+export const viewOptions = {
 	little: 'little',
 	many: 'many'
 }
