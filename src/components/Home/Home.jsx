@@ -1,15 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import {sortOptions, viewOptions} from '../Helpers/Constants/constants';
-
-import './Home.css';
+import {sortOptions, viewOptions, isShowOnPage} from '../Helpers/Constants/constants';
 
 import FilterSort from '../FilterSort/FilterSort';
 import ItemsList from '../ItemsList/ItemsList';
-
-let isShow = {
-	filterSort: true,
-}
 
 const Home = () => {
 	const [sortState, setSortState] = useState(sortOptions.highFirst);
@@ -45,8 +39,8 @@ const Home = () => {
 
 	return (
 		<>
-			{isShow.filterSort && <FilterSort {...filterSortProps} />}
-			<ItemsList sortState={sortState} viewState={viewState}/>
+			{isShowOnPage.home.filterSort && <FilterSort {...filterSortProps} />}
+			<ItemsList/>
 		</>
 	)
 }

@@ -4,7 +4,7 @@ import './ItemsList.css';
 
 import { sortOptions, viewOptions } from '../Helpers/Constants/constants';
 
-const ItemsList = ({sortState, viewState}) => {
+const ItemsList = ({sortState, viewState, className}) => {
 	let posts = [
 		{id: 1, price: 40, favorite: false},
 		{id: 2, price: 80, favorite: true},
@@ -24,7 +24,8 @@ const ItemsList = ({sortState, viewState}) => {
 				<div className="img">image #{el.id}</div>
 				<div className="buttons">
 					<div className={`favorite ${el.favorite ? 'added' : 'removed'}`}>
-						<i className="fa fa-heart-o hover" aria-hidden="true"></i>
+						<i className="fa fa-heart-o hover active" aria-hidden="true"></i>
+						<i className="fa fa-heart hover" aria-hidden="true"></i>
 					</div>
 					<p className="price">{el.price}$</p>
 					<div className="order">
@@ -38,7 +39,8 @@ const ItemsList = ({sortState, viewState}) => {
 	}
 
 	return (
-		<div className={`list ${viewState === viewOptions.little ? 'little' : 'many'}`}>
+		// just add class "line" for order page
+		<div className={`list scroll ${viewState === viewOptions.little ? 'little' : 'many'} ${className}`}>
 			{sortState === sortOptions.lowFirst
 				? sortArray(sortedLowFirst)
 				: sortArray(sortedHighFirst)}

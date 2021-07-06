@@ -1,5 +1,9 @@
 header {
   background: #B78D7B;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 header .container {
@@ -15,14 +19,15 @@ header .container {
           align-items: center;
 }
 
+header .left > *,
+header .right > * {
+  margin: 0 15px;
+}
+
 header .left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-header .left > * {
-  margin: 0 10px;
 }
 
 header .left .logo svg {
@@ -50,19 +55,44 @@ header .right {
   display: flex;
 }
 
-header .right > * {
-  margin: 0 10px;
-}
-
 header .right a {
   display: inline-block;
   width: 40px;
+  position: relative;
+}
+
+header .right a .counter {
+  display: none;
 }
 
 header .fa {
+  position: relative;
   color: #fff;
   font-size: 40px;
   font-weight: 100;
+}
+
+header .fa.addedItem + .counter {
+  font-size: 13px;
+  font-weight: 900;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  background: #ff8b01;
+  -webkit-transform: translate(50%, -20%);
+          transform: translate(50%, -20%);
 }
 
 header #burger {

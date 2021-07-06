@@ -26,10 +26,12 @@ const Header = () => {
 				</div>
 				<div className="right">
 					<NavLink to='/favorites'>
-						<i className="fa fa-heart-o hover" aria-hidden="true"></i>
+						<i className="fa fa-heart-o hover addedItem" aria-hidden="true"></i>
+						<div className="counter">3</div>
 					</NavLink>
 					<NavLink to='/order'>
-						<i className="fa fa-shopping-cart hover" aria-hidden="true"></i>
+						<i className="fa fa-shopping-cart hover addedItem" aria-hidden="true"></i>
+						<div className="counter">9+</div>
 					</NavLink>
 				</div>
 			</div>

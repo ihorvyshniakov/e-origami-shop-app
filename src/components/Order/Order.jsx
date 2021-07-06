@@ -1,9 +1,22 @@
 import React from 'react';
+import {isShowOnPage} from '../Helpers/Constants/constants';
+
 import './Order.css';
+
+import FilterSort from '../FilterSort/FilterSort';
+import ItemsList from '../ItemsList/ItemsList';
+
+// TODO: add sortFilter buttons functionallity with useContext
 
 const Order = () => {
 	return (
-		<h1>Order page</h1>
+		<>
+			{isShowOnPage.order.filterSort && <FilterSort/>}
+			<ItemsList className="line"/>
+			<div className="total r5">
+				<pre className="text">Total: <span className="value">420</span>$</pre>
+			</div>
+		</>
 	)
 }
 

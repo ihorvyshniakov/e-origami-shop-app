@@ -29,6 +29,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
+	box-sizing: border-box;
 }
 
 .hover {
@@ -45,8 +46,45 @@
 	}
 }
 
+// custom scrollbar
+@media (hover: hover) and (pointer: fine) {
+	.scroll {
+		&:not(body) {
+			padding-right: 10px;
+		}
+
+		/* width */
+		&::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: $orange;
+			border-radius: 5px;
+		}
+
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: $orange;
+		}
+
+		/* Track */
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+	}
+}
+
+body {
+	position: relative;
+	overflow-y: overlay;
+	overflow-x: hidden;
+}
+
 main {
-	margin-top: 10px;
+	margin-top: calc(80px + 20px);
+	margin-bottom: 20px;
 
 	.container {
 		background: $main_blue;

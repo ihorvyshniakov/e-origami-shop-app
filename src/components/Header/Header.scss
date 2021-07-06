@@ -2,6 +2,10 @@
 
 header {
 	background: $main_brown;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
 
 	.container {
 		position: relative;
@@ -11,12 +15,15 @@ header {
 		align-items: center;
 	}
 
+	.left,
+	.right {
+		&>* {
+			margin: 0 15px;
+		}
+	}
+
 	.left {
 		display: flex;
-
-		&>* {
-			margin: 0 10px;
-		}
 
 		.logo {
 			svg {
@@ -41,20 +48,40 @@ header {
 	.right {
 		display: flex;
 
-		&>* {
-			margin: 0 10px;
-		}
-
 		a {
 			display: inline-block;
 			width: 40px;
+			position: relative;
+
+			.counter {
+				display: none;
+			}
 		}
 	}
 
 	.fa {
+		position: relative;
 		color: #fff;
 		font-size: 40px;
 		font-weight: 100;
+
+		&.addedItem+.counter {
+			font-size: 13px;
+			font-weight: 900;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 26px;
+			width: 26px;
+			border-radius: 50%;
+			background: $orange;
+			transform: translate(50%, -20%);
+		}
 	}
 
 	#burger {

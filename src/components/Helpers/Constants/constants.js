@@ -7,3 +7,15 @@ export const viewOptions = {
 	little: 'little',
 	many: 'many'
 }
+
+export const isShowOnPage = {
+	home: {
+		filterSort: true
+	},
+	favorites: {
+		filterSort: true
+	},
+	order: {
+		filterSort: false
+	},
+}

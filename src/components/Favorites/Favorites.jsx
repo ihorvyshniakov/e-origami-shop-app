@@ -1,9 +1,17 @@
 import React from 'react';
-import './Favorites.css';
+import {isShowOnPage} from '../Helpers/Constants/constants';
+
+import FilterSort from '../FilterSort/FilterSort';
+import ItemsList from '../ItemsList/ItemsList';
+
+// TODO: add sortFilter buttons functionallity with useContext
 
 const Favorites = () => {
 	return (
-		<h1>Favorites page</h1>
+		<>
+			{isShowOnPage.favorites.filterSort && <FilterSort/>}
+			<ItemsList/>
+		</>
 	)
 }
 
