@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { ViewContext } from '../Helpers/Context/Context';
 import './ItemsList.css';
 
 import { sortOptions, viewOptions } from '../Helpers/Constants/constants';
 
 const ItemsList = ({sortState, viewState, className}) => {
+	const context = useContext(ViewContext);
+
+	console.log(context);
+	console.log(context.value);
 	let posts = [
 		{id: 1, price: 40, favorite: false},
 		{id: 2, price: 80, favorite: true},
@@ -17,7 +22,7 @@ const ItemsList = ({sortState, viewState, className}) => {
 	]
 	let sortedLowFirst = posts.sort((a,b) => a.price - b.price);
 	let sortedHighFirst = posts.sort((a,b) => b.price - a.price);
-
+	
 	const sortArray = (array) => {
 		return array.map(el => (
 			<div className="item r5">
@@ -31,7 +36,9 @@ const ItemsList = ({sortState, viewState, className}) => {
 					<div className="order">
 						<i className="fa fa-minus hover" aria-hidden="true"></i>
 						<p className="counter">0</p>
-						<i className="fa fa-plus hover" aria-hidden="true"></i>
+						<i className="fa fa-plus hover" 
+							onClick={() => context.setValue({sort: 'kon'})} 
+							aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>

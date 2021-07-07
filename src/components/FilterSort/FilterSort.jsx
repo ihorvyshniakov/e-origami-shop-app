@@ -7,7 +7,7 @@ import './FilterSort.css';
 const FilterSort = ({sortState, viewState, toggleSortType, toggleViewType}) => {
 	const view = useContext(ViewContext);
 
-	console.log(view.sort)
+	console.log(view)
 	return (
 		<div className="filterSort">
 			<div className="sorting r5 hover" onClick={toggleSortType} >

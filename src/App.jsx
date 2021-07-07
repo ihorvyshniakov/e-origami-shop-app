@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import { ViewContext } from './components/Helpers/Context/Context';
+import { ViewContext, sortViewStatus, ViewContextProvider } from './components/Helpers/Context/Context';
 
 import './App.css';
 
@@ -12,18 +12,18 @@ import Order from './components/Order/Order';
 const App = () => {
   return (
 	<BrowserRouter>
-		<ViewContext.Provider value={ViewContext}>
-			<div className="App">
-				<Header/>
-				<main>
-					<div className="container r10">
-						<Route path='/home' component={Home}/>
-						<Route path='/favorites' component={Favorites}/>
-						<Route path='/order' component={Order}/>
-					</div>
-				</main>
-			</div>
-		</ViewContext.Provider>
+		<ViewContextProvider>
+				<div className="App">
+					<Header/>
+					<main>
+						<div className="container r10">
+							<Route path='/home' component={Home}/>
+							<Route path='/favorites' component={Favorites}/>
+							<Route path='/order' component={Order}/>
+						</div>
+					</main>
+				</div>
+		</ViewContextProvider>
 	</BrowserRouter>
   );
 }
