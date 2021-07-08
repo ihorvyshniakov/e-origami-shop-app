@@ -7,11 +7,11 @@ const sortViewStatus = {
 };
 
 export const ViewContextProvider = ({children}) => {
-	const [value, setValue] = useState(sortViewStatus);
+	const [sort, setSort] = useState(sortViewStatus.sort);
 
-	const contextValue = {value, setValue};
+	const contextSort = {sort, setSort};
 	return (
-		<ViewContext.Provider value={contextValue}>
+		<ViewContext.Provider value={contextSort}>
 			{children}
 		</ViewContext.Provider>
 	)

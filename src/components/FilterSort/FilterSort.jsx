@@ -5,12 +5,11 @@ import { ViewContext } from '../Helpers/Context/Context';
 import './FilterSort.css';
 
 const FilterSort = ({sortState, viewState, toggleSortType, toggleViewType}) => {
-	const view = useContext(ViewContext);
+	const contextSort = useContext(ViewContext);
 
-	console.log(view)
 	return (
 		<div className="filterSort">
-			<div className="sorting r5 hover" onClick={toggleSortType} >
+			<div className="sorting r5 hover" onClick="() => contextSort.setSort({})" >
 				<i className={`fa fa-sort-amount-${sortState === sortOptions.highFirst ? 'desc' : 'asc'}`} aria-hidden="true"></i>
 			</div>
 			<div className="view r5 hover" onClick={toggleViewType}>

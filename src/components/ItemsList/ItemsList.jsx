@@ -6,10 +6,8 @@ import './ItemsList.css';
 import { sortOptions, viewOptions } from '../Helpers/Constants/constants';
 
 const ItemsList = ({sortState, viewState, className}) => {
-	const context = useContext(ViewContext);
+	const contextSort = useContext(ViewContext);
 
-	console.log(context);
-	console.log(context.value);
 	let posts = [
 		{id: 1, price: 40, favorite: false},
 		{id: 2, price: 80, favorite: true},
@@ -37,7 +35,7 @@ const ItemsList = ({sortState, viewState, className}) => {
 						<i className="fa fa-minus hover" aria-hidden="true"></i>
 						<p className="counter">0</p>
 						<i className="fa fa-plus hover" 
-							onClick={() => context.setValue({sort: 'kon'})} 
+							onClick={() => contextSort.setSort({sort: 'kon'})} 
 							aria-hidden="true"></i>
 					</div>
 				</div>
