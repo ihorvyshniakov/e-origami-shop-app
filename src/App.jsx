@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import { ViewContext, sortViewStatus, ViewContextProvider } from './components/Helpers/Context/Context';
-
-import './App.css';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Favorites from './components/Favorites/Favorites';
 import Order from './components/Order/Order';
+import { ViewContextProvider } from './components/Helpers/Context/Context';
+
+import './App.css';
 
 const App = () => {
   return (

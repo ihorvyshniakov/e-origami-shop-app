@@ -80,6 +80,10 @@
 
 .list .item .buttons .counter {
   margin: 0 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .list:not(.line) .item .fa {

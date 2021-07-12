@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import { ViewContext } from '../Helpers/Context/Context';
-import './ItemsList.css';
-
+import { GlobalContext } from '../Helpers/Context/Context';
 import { sortOptions, viewOptions } from '../Helpers/Constants/constants';
 
+import './ItemsList.css';
+
 const ItemsList = ({sortState, viewState, className}) => {
-	const contextSort = useContext(ViewContext);
+	const globalContext = useContext(GlobalContext);
 
 	let posts = [
 		{id: 1, price: 40, favorite: false},
@@ -17,25 +17,47 @@ const ItemsList = ({sortState, viewState, className}) => {
 		{id: 6, price: 55, favorite: true},
 		{id: 7, price: 39, favorite: false},
 		{id: 8, price: 90, favorite: false}
-	]
-	let sortedLowFirst = posts.sort((a,b) => a.price - b.price);
-	let sortedHighFirst = posts.sort((a,b) => b.price - a.price);
+	];
 	
+	const plusOrderHandler = () => {
+		globalContext.setOrderCounter((prev)=>++prev)
+	}
+	const minusOrderHandler = () => {
+		globalContext.setOrderCounter((prev)=>{
+			return prev>0 ? --prev : prev
+		})
+	}
+	
+	const plusLikedHandler = () => {
+		globalContext.setLikedCounter((prev)=>++prev)
+	}
+	const minusLikedHandler = () => {
+		globalContext.setLikedCounter((prev)=>{
+			return prev>0 ? --prev : prev
+		})
+	}
+
 	const sortArray = (array) => {
 		return array.map(el => (
 			<div className="item r5">
 				<div className="img">image #{el.id}</div>
 				<div className="buttons">
 					<div className={`favorite ${el.favorite ? 'added' : 'removed'}`}>
-						<i className="fa fa-heart-o hover active" aria-hidden="true"></i>
-						<i className="fa fa-heart hover" aria-hidden="true"></i>
+						<i className="fa fa-heart-o hover active" 
+							onClick={plusLikedHandler}
+							aria-hidden="true"></i>
+						<i className="fa fa-heart hover" 
+							onClick={minusLikedHandler}
+							aria-hidden="true"></i>
 					</div>
 					<p className="price">{el.price}$</p>
 					<div className="order">
-						<i className="fa fa-minus hover" aria-hidden="true"></i>
+						<i className="fa fa-minus hover" 
+							onClick={minusOrderHandler}
+							aria-hidden="true"></i>
 						<p className="counter">0</p>
 						<i className="fa fa-plus hover" 
-							onClick={() => contextSort.setSort({sort: 'kon'})} 
+							onClick={plusOrderHandler} 
 							aria-hidden="true"></i>
 					</div>
 				</div>
@@ -45,10 +67,10 @@ const ItemsList = ({sortState, viewState, className}) => {
 
 	return (
 		// just add class "line" for order page
-		<div className={`list scroll ${viewState === viewOptions.little ? 'little' : 'many'} ${className}`}>
-			{sortState === sortOptions.lowFirst
-				? sortArray(sortedLowFirst)
-				: sortArray(sortedHighFirst)}
+		<div className={`list scroll many`}>
+			{globalContext.sortType === sortOptions.lowFirst
+				? sortArray(posts.sort((a,b) => a.price - b.price))
+				: sortArray(posts.sort((a,b) => b.price - a.price))}
 		</div>
 	)
 }

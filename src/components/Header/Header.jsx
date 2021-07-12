@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, NavLink } from 'react-router-dom';
+
+import { ReactComponent as LogoSvg } from '../../img/bird.svg';
+import { GlobalContext } from '../Helpers/Context/Context';
 
 import './Header.css';
 
-import { ReactComponent as LogoSvg } from '../../img/bird.svg';
-
 const Header = () => {
+	const globalContext = useContext(GlobalContext);
+
 	return (
 		<header>
 			<div className="container">
@@ -27,11 +30,20 @@ const Header = () => {
 				<div className="right">
 					<NavLink to='/favorites'>
 						<i className="fa fa-heart-o hover addedItem" aria-hidden="true"></i>
-						<div className="counter">3</div>
+						{globalContext.likedCounter > 0 && (
+							<div className="counter">{
+								globalContext.likedCounter<10 ? globalContext.likedCounter : '9+'
+							}</div>
+						)}
 					</NavLink>
 					<NavLink to='/order'>
 						<i className="fa fa-shopping-cart hover addedItem" aria-hidden="true"></i>
-						<div className="counter">9+</div>
+						{globalContext.orderCounter > 0 && (
+							<div className="counter">{
+								globalContext.orderCounter<10 ? globalContext.orderCounter : '9+'
+							}</div>
+						)}
+						
 					</NavLink>
 				</div>
 			</div>
