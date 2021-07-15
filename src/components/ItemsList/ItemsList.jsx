@@ -2,22 +2,12 @@ import React, { useContext } from 'react';
 
 import { GlobalContext } from '../Helpers/Context/Context';
 import { sortOptions, viewOptions } from '../Helpers/Constants/constants';
+import { posts } from '../Helpers/Data';
 
 import './ItemsList.css';
 
-const ItemsList = ({sortState, viewState, className}) => {
+const ItemsList = ({isShowForOrder}) => {
 	const globalContext = useContext(GlobalContext);
-
-	let posts = [
-		{id: 1, price: 40, favorite: false},
-		{id: 2, price: 80, favorite: true},
-		{id: 3, price: 120, favorite: false},
-		{id: 4, price: 500, favorite: false},
-		{id: 5, price: 20, favorite: true},
-		{id: 6, price: 55, favorite: true},
-		{id: 7, price: 39, favorite: false},
-		{id: 8, price: 90, favorite: false}
-	];
 	
 	const plusOrderHandler = () => {
 		globalContext.setOrderCounter((prev)=>++prev)
@@ -28,14 +18,18 @@ const ItemsList = ({sortState, viewState, className}) => {
 		})
 	}
 	
-	const plusLikedHandler = () => {
-		globalContext.setLikedCounter((prev)=>++prev)
+	const likesListHandler = (el) => {
+		// if there's no such item -> add it
+		if(!globalContext.likedList.some(item => item.id == el.id)){
+			globalContext.setLikedList([...globalContext.likedList, el]);
+		} else {
+			// otherwise -> remove it
+			let filteredList = globalContext.likedList.filter(item => item.id != el.id);
+			globalContext.setLikedList(filteredList);
+		}
 	}
-	const minusLikedHandler = () => {
-		globalContext.setLikedCounter((prev)=>{
-			return prev>0 ? --prev : prev
-		})
-	}
+
+	console.log(globalContext.likedList)
 
 	const sortArray = (array) => {
 		return array.map(el => (
@@ -44,10 +38,10 @@ const ItemsList = ({sortState, viewState, className}) => {
 				<div className="buttons">
 					<div className={`favorite ${el.favorite ? 'added' : 'removed'}`}>
 						<i className="fa fa-heart-o hover active" 
-							onClick={plusLikedHandler}
+							onClick={() => likesListHandler(el)}
 							aria-hidden="true"></i>
 						<i className="fa fa-heart hover" 
-							onClick={minusLikedHandler}
+							onClick={() => likesListHandler(el)}
 							aria-hidden="true"></i>
 					</div>
 					<p className="price">{el.price}$</p>
@@ -67,7 +61,7 @@ const ItemsList = ({sortState, viewState, className}) => {
 
 	return (
 		// just add class "line" for order page
-		<div className={`list scroll many`}>
+		<div className={`list scroll ${globalContext.viewType == viewOptions.little ? 'little' : 'many'} ${isShowForOrder && 'line'}`}>
 			{globalContext.sortType === sortOptions.lowFirst
 				? sortArray(posts.sort((a,b) => a.price - b.price))
 				: sortArray(posts.sort((a,b) => b.price - a.price))}

@@ -30,9 +30,9 @@ const Header = () => {
 				<div className="right">
 					<NavLink to='/favorites'>
 						<i className="fa fa-heart-o hover addedItem" aria-hidden="true"></i>
-						{globalContext.likedCounter > 0 && (
+						{globalContext.likedList.length > 0 && (
 							<div className="counter">{
-								globalContext.likedCounter<10 ? globalContext.likedCounter : '9+'
+								globalContext.likedList.length<10 ? globalContext.likedList.length : '9+'
 							}</div>
 						)}
 					</NavLink>

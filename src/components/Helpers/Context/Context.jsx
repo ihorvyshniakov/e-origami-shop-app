@@ -3,12 +3,21 @@ import React, {useState} from 'react';
 import { sortOptions, viewOptions } from '../Constants/constants';
 
 export const ViewContextProvider = ({children}) => {
-	const [likedCounter, setLikedCounter] = useState(0);
 	const [orderCounter, setOrderCounter] = useState(0);
 	const [sortType, setSortType] = useState(sortOptions.lowFirst);
-	const [viewType, viewSortType] = useState(viewOptions.many);
+	const [viewType, setViewType] = useState(viewOptions.little);
+	const [likedList, setLikedList] = useState([]);
 	
-	const globalContext = {likedCounter, setLikedCounter, orderCounter, setOrderCounter, sortType, setSortType};
+	const globalContext = {
+		orderCounter, 
+		setOrderCounter, 
+		sortType, 
+		setSortType, 
+		viewType, 
+		setViewType,
+		likedList, 
+		setLikedList,
+	};
 	return (
 		<GlobalContext.Provider value={globalContext}>
 			{children}
