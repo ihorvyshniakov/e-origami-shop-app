@@ -6,17 +6,10 @@ import { posts } from '../Helpers/Data';
 
 import './ItemsList.css';
 
-const ItemsList = ({isShowForOrder}) => {
+// TODO: Refactor this code, cause using component inside component
+
+const ItemsList = ({isShowForOrder, home, favorites, order}) => {
 	const globalContext = useContext(GlobalContext);
-	
-	const plusOrderHandler = () => {
-		globalContext.setOrderCounter((prev)=>++prev)
-	}
-	const minusOrderHandler = () => {
-		globalContext.setOrderCounter((prev)=>{
-			return prev>0 ? --prev : prev
-		})
-	}
 	
 	const likesListHandler = (el) => {
 		// if there's no such item -> add it
@@ -28,30 +21,40 @@ const ItemsList = ({isShowForOrder}) => {
 			globalContext.setLikedList(filteredList);
 		}
 	}
+	
+	const ordersListHandler = (el) => {
+		// if there's no such item -> add it
+		if(!globalContext.ordersList.some(item => item.id == el.id)){
+			globalContext.setOrdersList([...globalContext.ordersList, el]);
+		} else {
+			// otherwise -> remove it
+			let filteredList = globalContext.ordersList.filter(item => item.id != el.id);
+			globalContext.setOrdersList(filteredList);
+		}
+	}
 
-	console.log(globalContext.likedList)
-
-	const sortArray = (array) => {
+	const showArrayOfElements = (array) => {
 		return array.map(el => (
 			<div className="item r5">
 				<div className="img">image #{el.id}</div>
 				<div className="buttons">
 					<div className={`favorite ${el.favorite ? 'added' : 'removed'}`}>
-						<i className="fa fa-heart-o hover active" 
-							onClick={() => likesListHandler(el)}
-							aria-hidden="true"></i>
-						<i className="fa fa-heart hover" 
+						<i className={`fa fa-heart${
+							globalContext.likedList.some(item => item.id == el.id)
+							? ''
+							: '-o'
+						} hover active`} 
 							onClick={() => likesListHandler(el)}
 							aria-hidden="true"></i>
 					</div>
 					<p className="price">{el.price}$</p>
 					<div className="order">
-						<i className="fa fa-minus hover" 
-							onClick={minusOrderHandler}
-							aria-hidden="true"></i>
-						<p className="counter">0</p>
-						<i className="fa fa-plus hover" 
-							onClick={plusOrderHandler} 
+						<i className={`fa fa-${
+							globalContext.ordersList.some(item => item.id == el.id)
+							? order ? 'times' : 'shopping-cart'
+							: 'shopping-basket'
+						} hover`}
+							onClick={() => ordersListHandler(el)} 
 							aria-hidden="true"></i>
 					</div>
 				</div>
@@ -59,12 +62,22 @@ const ItemsList = ({isShowForOrder}) => {
 		))
 	}
 
+	const ChoosePage = () => {
+		if(home){
+			return globalContext.sortType === sortOptions.lowFirst
+				? showArrayOfElements(posts.sort((a,b) => a.price - b.price))
+				: showArrayOfElements(posts.sort((a,b) => b.price - a.price))
+		} else if(favorites){
+			return showArrayOfElements(globalContext.likedList)
+		} else if(order){
+			return showArrayOfElements(globalContext.ordersList)
+		}
+	}
+
 	return (
 		// just add class "line" for order page
 		<div className={`list scroll ${globalContext.viewType == viewOptions.little ? 'little' : 'many'} ${isShowForOrder && 'line'}`}>
-			{globalContext.sortType === sortOptions.lowFirst
-				? sortArray(posts.sort((a,b) => a.price - b.price))
-				: sortArray(posts.sort((a,b) => b.price - a.price))}
+			<ChoosePage/>
 		</div>
 	)
 }

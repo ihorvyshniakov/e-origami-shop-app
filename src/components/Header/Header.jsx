@@ -38,9 +38,9 @@ const Header = () => {
 					</NavLink>
 					<NavLink to='/order'>
 						<i className="fa fa-shopping-cart hover addedItem" aria-hidden="true"></i>
-						{globalContext.orderCounter > 0 && (
+						{globalContext.ordersList.length > 0 && (
 							<div className="counter">{
-								globalContext.orderCounter<10 ? globalContext.orderCounter : '9+'
+								globalContext.ordersList.length<10 ? globalContext.ordersList.length : '9+'
 							}</div>
 						)}
 						

@@ -86,6 +86,16 @@
           user-select: none;
 }
 
+.list .item .buttons .order i {
+  display: inline-block;
+  width: 26px;
+  height: 22px;
+}
+
+.list .item .buttons .order .fa-shopping-basket {
+  font-size: 22px;
+}
+
 .list:not(.line) .item .fa {
   font-size: 25px;
 }

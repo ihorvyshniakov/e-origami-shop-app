@@ -8,7 +8,7 @@ const Home = () => {
 	return (
 		<>
 			{isShowOnPage.home.filterSort && <FilterSort />}
-			<ItemsList/>
+			<ItemsList home={true}/>
 		</>
 	)
 }

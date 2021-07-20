@@ -66,6 +66,18 @@
 				margin: 0 10px;
 				user-select: none;
 			}
+
+			.order {
+				i {
+					display: inline-block;
+					width: 26px;
+					height: 22px;
+				}
+
+				.fa-shopping-basket {
+					font-size: 22px;
+				}
+			}
 		}
 	}
 

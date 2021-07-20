@@ -8,7 +8,7 @@ const Favorites = () => {
 	return (
 		<>
 			{isShowOnPage.favorites.filterSort && <FilterSort/>}
-			<ItemsList/>
+			<ItemsList favorites={true}/>
 		</>
 	)
 }
