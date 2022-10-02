@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -9,23 +9,25 @@ import { ViewContextProvider } from './components/Helpers/Context/Context';
 
 import './App.css';
 
+// TODO: fix filtering on favorites page; fix routing on github pages(home etc.)
+
 const App = () => {
-  return (
-	<BrowserRouter>
-		<ViewContextProvider>
-				<div className="App">
-					<Header/>
+	return (
+		<BrowserRouter>
+			<ViewContextProvider>
+				<div className='App'>
+					<Header />
 					<main>
-						<div className="container r10">
-							<Route path='/home' component={Home}/>
-							<Route path='/favorites' component={Favorites}/>
-							<Route path='/order' component={Order}/>
+						<div className='container r10'>
+							<Route path='/home' component={Home} />
+							<Route path='/favorites' component={Favorites} />
+							<Route path='/order' component={Order} />
 						</div>
 					</main>
 				</div>
-		</ViewContextProvider>
-	</BrowserRouter>
-  );
-}
+			</ViewContextProvider>
+		</BrowserRouter>
+	);
+};
 
 export default App;
