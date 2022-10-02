@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/e-origami-shop-app/static/css/main.b66a6e3a.chunk.css",
+    "main.js": "/e-origami-shop-app/static/js/main.ce31d35b.chunk.js",
+    "main.js.map": "/e-origami-shop-app/static/js/main.ce31d35b.chunk.js.map",
+    "runtime-main.js": "/e-origami-shop-app/static/js/runtime-main.3d8616fb.js",
+    "runtime-main.js.map": "/e-origami-shop-app/static/js/runtime-main.3d8616fb.js.map",
+    "static/js/2.810dbea3.chunk.js": "/e-origami-shop-app/static/js/2.810dbea3.chunk.js",
+    "static/js/2.810dbea3.chunk.js.map": "/e-origami-shop-app/static/js/2.810dbea3.chunk.js.map",
+    "static/js/3.15c73d6a.chunk.js": "/e-origami-shop-app/static/js/3.15c73d6a.chunk.js",
+    "static/js/3.15c73d6a.chunk.js.map": "/e-origami-shop-app/static/js/3.15c73d6a.chunk.js.map",
+    "index.html": "/e-origami-shop-app/index.html",
+    "precache-manifest.a129b48b9f5962a5e5cf89858a07c6c4.js": "/e-origami-shop-app/precache-manifest.a129b48b9f5962a5e5cf89858a07c6c4.js",
+    "service-worker.js": "/e-origami-shop-app/service-worker.js",
+    "static/css/main.b66a6e3a.chunk.css.map": "/e-origami-shop-app/static/css/main.b66a6e3a.chunk.css.map",
+    "static/js/2.810dbea3.chunk.js.LICENSE.txt": "/e-origami-shop-app/static/js/2.810dbea3.chunk.js.LICENSE.txt",
+    "static/media/bird.13d9e0a0.svg": "/e-origami-shop-app/static/media/bird.13d9e0a0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3d8616fb.js",
+    "static/js/2.810dbea3.chunk.js",
+    "static/css/main.b66a6e3a.chunk.css",
+    "static/js/main.ce31d35b.chunk.js"
+  ]
+}
