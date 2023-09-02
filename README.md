@@ -1,4 +1,4 @@
-# [E-shop origami app](http://my-portfolio.cf/e-origami-shop-app)
+# [E-shop origami app](https://ihorvyshniakov.github.io/e-origami-shop-app)
 
 © 2022 Developed by Vyshniakov Ihor.
 
